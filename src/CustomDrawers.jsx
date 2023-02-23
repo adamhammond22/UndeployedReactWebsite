@@ -37,6 +37,25 @@ const pageIconReturner = (index) => {
   }
 };
 
+/* Menu buttons for both navbars */
+const menuButtons = () => {
+  return (
+    pages.map((page, index)=>(
+      <Button
+        sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
+        color = 'secondary'
+        variant = 'contained'
+        startIcon={pageIconReturner(index)}
+        name = {page + ' button'}
+        key = {page}>
+        <Typography variant = "h6">
+        {page}
+        </Typography>
+      </Button>
+    ))
+  );
+};
+
 /**
  * Navbar Drawer creator
  * @return {object} JSX
@@ -46,19 +65,36 @@ function CustomNavbar() {
   const {themeState, changeThemeState} = useContext(ThemeStateContext);
 
   /* State to track if collapsed navbar open */
-  // const [CollapsedNBOpen, setCollapsedNBOpen] = useState(false);
+  const [CollapsedNBOpen, setCollapsedNBOpen] = React.useState(false);
 
   /* State to track anchor of settings */
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const settingsOpen = Boolean(anchorEl);
 
+  /* Handles a change in collapsed NB, setting it to bool */
+  const handleChangeCollapsed = (bool) => {
+    console.log('changecalled');
+    if (CollapsedNBOpen) {
+      setCollapsedNBOpen(false);
+    } else {
+      setCollapsedNBOpen(true);
+    }
+  };
+
+  /* Debug
+  React.useEffect(() => {
+    console.log('navbar open:' + CollapsedNBOpen);
+  }); */
+
+  /* Handles opening and closing settings */
   const handleSettingsClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleSettingsClose = () => {
     setAnchorEl(null);
   };
+  /* Handles theme change */
   const handleDarkModeChange = () => {
     if (themeState === 'dark') {
       changeThemeState('light');
@@ -69,52 +105,54 @@ function CustomNavbar() {
 
   return (
       <Box sx={{flexGrow: 1}}>
+        {/* Collapsed Navbar */}
         <Drawer
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
           sx = {{xs: 'block', md: 'none'}}
-          label = 'collapsed Navbar'
+          label = 'Main Navbar'
           anchor = 'left'
-          open = {false}
-          variant = 'persistent'>
+          sx = {{minWidth: 100}}
+          name = 'left navbar'
+          open = {CollapsedNBOpen}
+          onClose = {handleChangeCollapsed}
+          variant = 'temporary'
+          PaperProps={{sx: {width: 160}}}>
+          <IconButton />
+          {menuButtons()}
         </Drawer>
+        {/* Top Navbar */}
         <AppBar position="static"
-        color = 'primary'>
+        color = 'primary' name = 'top navbar'>
           <Toolbar>
             {/* Collapsed Options */}
             <IconButton sx =
               {{display: {xs: 'flex', md: 'none', padding: 0},
-                fontSize: 40}}
-              color = 'tertiary' size = 'large'>
-              <MenuIcon size = 'large' sx = {{mr: 3, height: 40, width: 40}}/>
+                fontSize: 40, height: 60, width: 60}}
+              name = 'navbar options' color = 'tertiary' size = 'large'
+              onClick = {handleChangeCollapsed}>
+              <MenuIcon sx = {{height: 40, width: 40}} />
             </IconButton>
             {/* Typography box */}
             <Box sx = {{display: 'flex', flexGrow: 1,
-              justifyContent: 'left'}}>
+              justifyContent: 'left'}}name = 'typography box'>
               <Typography variant="h2" component="div" sx={{display: 'flex'}}>
                 Adam Hammond
               </Typography>
             </Box>
             {/* Button Box */}
             <Box sx = {{flexGrow: 2, justifyContent: 'flex-end',
-              display: {xs: 'none', md: 'flex'}}}>
+              display: {xs: 'none', md: 'flex'}}} name = 'button box'>
               {/* Buttons Box*/}
-              {pages.map((page, index)=>(
-                <Button
-                  sx = {{maxWidth: 120, ml: 2}}
-                  color = 'secondary'
-                  variant = 'contained'
-                  startIcon={pageIconReturner(index)}
-                  name = {page}
-                  key = {page}>
-                  <Typography variant = "h6">
-                  {page}
-                  </Typography>
-                </Button>
-              ))}
+              {menuButtons()}
             </Box>
             {/* Settings Box*/}
             <Box sx = {{flexShrink: 1, mr: 2,
-              width: 0, justifyContent: 'flex-end'}}>
-              <IconButton onClick = {handleSettingsClick}>
+              width: 0, justifyContent: 'flex-end'}}
+              name = 'settings box'>
+              <IconButton onClick = {handleSettingsClick}
+                name = 'settings button'>
                 <SettingsIcon color = 'tertiary'/>
               </IconButton>
               <Menu

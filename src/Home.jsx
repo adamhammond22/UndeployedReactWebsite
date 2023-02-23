@@ -16,7 +16,7 @@ function Home() {
         <CustomNavbar />
         <Box name= 'content' sx={{display: 'flex', alignItems: 'center',
           flexDirection: 'column'}}>
-
+          {/* Top Box */}
           <Box sx={{display: 'flex', minWidth: 900, width: '90%',
             height: 500, mt: 5}}
           backgroundColor = 'tertiary.main'>
