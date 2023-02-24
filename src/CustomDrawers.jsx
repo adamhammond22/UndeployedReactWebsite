@@ -23,6 +23,8 @@ import {ThemeStateContext} from './Contexts';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import {useTheme} from '@mui/material/styles';
 /* Handles Pages and their respective Icons */
 const pages = ['Contact', 'Projects', 'Resume', 'Games'];
 const pageIconReturner = (index) => {
@@ -173,4 +175,54 @@ function CustomNavbar() {
       </Box>
   );
 };
+
+
+/* Left Content Boxes*/
+const leftContentBoxes = () => {
+  return (
+    <Typography variant = "h6">
+    LeftStuff
+    </Typography>
+  );
+};
+/* Right Content Boxes*/
+const rightContentBoxes = () => {
+  return (
+    <Typography variant = "h6">
+    RightStuff!
+    </Typography>
+  );
+};
+
+/**
+ * Main Content creator
+ * @return {object} JSX
+ */
+function MainContent() {
+  /* We render default or narrow based on theme breakpoint */
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  if (matches) {
+    return (
+      <Box name= 'content' sx={{display: 'flex', justifyContent: 'center',
+        flexDirection: 'row', minWidth: 900, width: '90%', mt: 5}}>
+        <Box sx={{display: 'flex', width: '100%', height: 500}}
+        backgroundColor = 'primary.main' >
+          {rightContentBoxes()}
+        </Box>
+        <Box sx={{display: 'flex', width: '100%', height: 300}}
+          backgroundColor = 'secondary.contrastText'>
+          {leftContentBoxes()}
+        </Box>
+      </Box>
+    );
+  } else {
+    return (
+      <Box>
+        {leftContentBoxes()}
+      </Box>);
+  }
+};
+
+export {MainContent};
 export {CustomNavbar};
