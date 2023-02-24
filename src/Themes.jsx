@@ -35,6 +35,16 @@ const lightTheme = {
       fontWeight: 600,
 
     },
+    p1: {
+      fontSize: 50,
+      fontWeight: 10,
+
+    },
+    p2: {
+      fontSize: 30,
+      fontWeight: 10,
+
+    },
   },
   breakpoints: {
     values: {
