@@ -197,7 +197,7 @@ const rightContentBoxes = () => {
 /* left Content Boxes*/
 const leftContentBoxes = () => {
   return (
-  <Box sx = {{minWidth: 340}}>
+  <Box sx = {{minWidth: 400}}>
     {/* Languages Box */}
     <Box backgroundColor = 'primary.main'
     color = 'primary.contrastText' sx = {{p: 3, mb: 2}}>
@@ -209,7 +209,7 @@ const leftContentBoxes = () => {
         flexDirection: 'row', justifyContent: 'space-between',
         lineHeight: 1.6}}>
         {/* Left side box */}
-        <Box>
+        <Box name = 'languages left'>
           <Typography variant = "p3">
             C<br/>
             C++<br/>
@@ -220,7 +220,7 @@ const leftContentBoxes = () => {
           </Typography>
         </Box>
         {/* right side box */}
-        <Box align = 'right'>
+        <Box align = 'right' name = 'languages right'>
           <Typography variant = "p3">
             Proficient<br/>
             Competent<br/>
@@ -239,10 +239,7 @@ const leftContentBoxes = () => {
         sx = {{mb: 1}}>
       Technologies
       </Typography>
-      {/* Left and Right side boxes */}
-      <Box sx = {{display: 'flex',
-        flexDirection: 'row', justifyContent: 'space-between',
-        lineHeight: 1.6}}>
+      <Box sx = {{lineHeight: 1.6}}>
           <Typography variant = "p3">
             Windows, Unix & Linux<br/>
             Command Line & Bash Scripting<br/>
@@ -256,15 +253,11 @@ const leftContentBoxes = () => {
     </Box>
     {/* Frameworks and Specs Box */}
     <Box backgroundColor = 'primary.main'
-      color = 'primary.contrastText' sx = {{p: 3, mb: 2}}
-      sx = {{mb: 1}}>
+      color = 'primary.contrastText' sx = {{p: 3, mb: 2}}>
       <Typography variant = "h3" name = 'frameworks and specifications'>
       Frameworks & Specs
       </Typography>
-      {/* Left and Right side boxes */}
-      <Box sx = {{display: 'flex',
-        flexDirection: 'row', justifyContent: 'space-between',
-        lineHeight: 1.6}}>
+      <Box sx = {{lineHeight: 1.6}}>
           <Typography variant = "p3">
             React.js<br/>
             Node.js & Express<br/>
