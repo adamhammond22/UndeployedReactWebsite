@@ -24,9 +24,9 @@ function Home() {
         <Box name= 'content' sx={{display: 'flex', alignItems: 'center',
           flexDirection: 'column'}}>
           {/* Top Box */}
-          <Box sx={{display: 'flex', minWidth: 500, width: '90%',
+          <Box sx={{display: 'flex', minWidth: 320, width: `calc(90%)`,
             height: 'auto', mt: 5, flexDirection: {xs: 'column', md: 'row'},
-            p: 4, alignItems: 'center'}}
+            p: '16px', alignItems: 'center'}}
             backgroundColor = 'tertiary.main' name = 'greeting box'>
             <Box component = 'img' src="adam2.jpg" width = '40%' height = '40%'
             sx = {{height: 330, width: 413,
@@ -52,7 +52,10 @@ function Home() {
             </Box>
           </Box>
           {/* Main Content Box */}
+          <Box sx = {{minWidth: 320, width: `calc(90%)`,
+            mt: 2, height: 'auto'}}>
           <MainContent name = 'main Content'/>
+          </Box>
         </Box>
       </Box>
   );

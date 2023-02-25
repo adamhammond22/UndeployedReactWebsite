@@ -177,49 +177,138 @@ function CustomNavbar() {
 };
 
 
-/* Left Content Boxes*/
-const leftContentBoxes = () => {
-  return (
-    <Typography variant = "h6">
-    LeftStuff
-    </Typography>
-  );
-};
-/* Right Content Boxes*/
+/* right Content Boxes*/
 const rightContentBoxes = () => {
   return (
-    <Typography variant = "h6">
-    RightStuff!
-    </Typography>
+    <Box backgroundColor = 'green'
+      sx = {{height: 300}}>
+      <Typography variant = "h3">
+      About Me
+      </Typography>
+      <Typography variant = "p3">
+        I'm interested in Algorithems, Systema, Machine Learning,
+        Networking, and more! I'm currently looking for a 2023
+        Summer Internship, as well as opportunities after I
+        graduate in June 2024!
+      </Typography>
+    </Box>
+  );
+};
+/* left Content Boxes*/
+const leftContentBoxes = () => {
+  return (
+  <Box sx = {{minWidth: 340}}>
+    {/* Languages Box */}
+    <Box backgroundColor = 'primary.main'
+    color = 'primary.contrastText' sx = {{p: 3, mb: 2}}>
+      <Typography variant = "h3" name = 'languages' sx = {{mb: 1}}>
+      Languages
+      </Typography>
+      {/* Left and Right side boxes */}
+      <Box sx = {{display: 'flex',
+        flexDirection: 'row', justifyContent: 'space-between',
+        lineHeight: 1.6}}>
+        {/* Left side box */}
+        <Box>
+          <Typography variant = "p3">
+            C<br/>
+            C++<br/>
+            Python<br/>
+            JavaScript & React<br/>
+            HTML & CSS<br/>
+            PostgreSQL<br/>
+          </Typography>
+        </Box>
+        {/* right side box */}
+        <Box align = 'right'>
+          <Typography variant = "p3">
+            Proficient<br/>
+            Competent<br/>
+            Proficient<br/>
+            Competent<br/>
+            Competent<br/>
+            Novice<br/>
+          </Typography>
+        </Box>
+      </Box>
+    </Box>
+    {/* Skills Box */}
+    <Box backgroundColor = 'primary.main'
+    color = 'primary.contrastText' sx = {{p: 3, mb: 2}}>
+      <Typography variant = "h3" name = 'technologies'
+        sx = {{mb: 1}}>
+      Technologies
+      </Typography>
+      {/* Left and Right side boxes */}
+      <Box sx = {{display: 'flex',
+        flexDirection: 'row', justifyContent: 'space-between',
+        lineHeight: 1.6}}>
+          <Typography variant = "p3">
+            Windows, Unix & Linux<br/>
+            Command Line & Bash Scripting<br/>
+            Make<br/>
+            Docker<br/>
+            LaTeX<br/>
+            Git & Perforce<br/>
+            Unreal Engine 4 & 5<br/>
+          </Typography>
+      </Box>
+    </Box>
+    {/* Frameworks and Specs Box */}
+    <Box backgroundColor = 'primary.main'
+      color = 'primary.contrastText' sx = {{p: 3, mb: 2}}
+      sx = {{mb: 1}}>
+      <Typography variant = "h3" name = 'frameworks and specifications'>
+      Frameworks & Specs
+      </Typography>
+      {/* Left and Right side boxes */}
+      <Box sx = {{display: 'flex',
+        flexDirection: 'row', justifyContent: 'space-between',
+        lineHeight: 1.6}}>
+          <Typography variant = "p3">
+            React.js<br/>
+            Node.js & Express<br/>
+            Open API<br/>
+            RESTful APIs<br/>
+          </Typography>
+      </Box>
+    </Box>
+  </Box>
   );
 };
 
 /**
  * Main Content creator
+ * Splits Content into 2 or 1 column based on breakpoint
  * @return {object} JSX
  */
 function MainContent() {
   /* We render default or narrow based on theme breakpoint */
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  /* If md or larger, return content in 2 columns */
   if (matches) {
     return (
-      <Box name= 'content' sx={{display: 'flex', justifyContent: 'center',
-        flexDirection: 'row', minWidth: 900, width: '90%', mt: 5}}>
-        <Box sx={{display: 'flex', width: '100%', height: 500}}
-        backgroundColor = 'primary.main' >
+      <Box name= 'content' sx={{display: 'flex',
+        justifyContent: 'space-between', flexDirection: 'row'}}>
+        <Box sx={{flexDirection: 'column', flexGrow: 5, maxWidth: 1000}}>
+          {rightContentBoxes()}
           {rightContentBoxes()}
         </Box>
-        <Box sx={{display: 'flex', width: '100%', height: 300}}
-          backgroundColor = 'secondary.contrastText'>
+        {/* Splitting box in middle */}
+        <Box sx={{flexDirection: 'column', flexGrow: 2, maxWidth: 400,
+          ml: 2}}>
           {leftContentBoxes()}
         </Box>
       </Box>
     );
+  /* If small, return content in 1 column */
   } else {
     return (
-      <Box>
+      <Box name= 'content' sx={{display: 'flex', justifyContent: 'center',
+        flexDirection: 'column'}}>
         {leftContentBoxes()}
+        {rightContentBoxes()}
       </Box>);
   }
 };
