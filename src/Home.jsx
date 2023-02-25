@@ -1,12 +1,14 @@
 import React from 'react';
-import {CustomNavbar} from './CustomDrawers';
+import {CustomNavbar} from './CustomNavbar';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import {Typography} from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import {MainContent} from './CustomDrawers';
+import {leftContentBoxes, rightContentBoxes} from './HomeContent';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import {useTheme} from '@mui/material/styles';
 // import {useNavigate} from "react-router-dom";
 
 /**
@@ -60,5 +62,41 @@ function Home() {
       </Box>
   );
 }
+
+/**
+ * Main Content creator
+ * Splits Content into 2 or 1 column based on breakpoint
+ * @return {object} JSX
+ */
+function MainContent() {
+  /* We render default or narrow based on theme breakpoint */
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  /* If md or larger, return content in 2 columns */
+  if (matches) {
+    return (
+      <Box name= 'content' sx={{display: 'flex',
+        justifyContent: 'space-between', flexDirection: 'row'}}>
+        <Box sx={{flexDirection: 'column', flexGrow: 5, maxWidth: 1000}}>
+          {rightContentBoxes()}
+          {rightContentBoxes()}
+        </Box>
+        {/* Splitting box in middle */}
+        <Box sx={{flexDirection: 'column', flexGrow: 2, maxWidth: 400,
+          ml: 2}}>
+          {leftContentBoxes()}
+        </Box>
+      </Box>
+    );
+  /* If small, return content in 1 column */
+  } else {
+    return (
+      <Box name= 'content' sx={{display: 'flex', justifyContent: 'center',
+        flexDirection: 'column'}}>
+        {leftContentBoxes()}
+        {rightContentBoxes()}
+      </Box>);
+  }
+};
 
 export default Home;
