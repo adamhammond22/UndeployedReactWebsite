@@ -12,6 +12,7 @@ import Link from '@mui/material/Link';
 const githubLink = 'https://github.com/adamhammond22';
 const linkedInLink = 'https://www.linkedin.com/in/adamhammond22/';
 
+
 /**
  * Projects Component
  * @return {object} JSX
@@ -21,8 +22,39 @@ function Projects() {
     <Box>
       <CustomNavbar />
       <Box name= 'content' sx={{display: 'flex', alignItems: 'center',
-        flexDirection: 'column'}}>
+        flexDirection: 'column',
+        justifyContent: 'center'}}>
+        {/* Projects */}
+        <Box backgroundColor = 'quaternary.main'
+          sx = {{height: 'auto', width: `calc(90%)`,
+          mt: 2, mb: 2, flexDirection: 'column', alignItems: 'center'}} >
+          {/* projects line 1*/}
+          <Box sx = {{display: 'flex', alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: {xs: 'column', md: 'row'}}}>
+            <Box backgroundColor = 'red'
+              sx = {{height: 300, width: 300}}/>
+            {/* Spacing Box */}
+            <Box sx = {{flexShrink: 1, minWidth: 10,
+              display: {xs: 'none', md: 'block'}}}/>
+            <Box backgroundColor = 'blue'
+              sx = {{height: 300, width: 300}}/>
+          </Box>
+        {/* projects line 2*/}
+          <Box sx = {{display: 'flex', alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: {xs: 'column', md: 'row'}}}>
+            <Box backgroundColor = 'yellow'
+              sx = {{height: 300, width: 300}}/>
+            {/* Spacing Box */}
+            <Box sx = {{flexShrink: 1, minWidth: 10,
+              display: {xs: 'none', md: 'block'}}}/>
+            <Box backgroundColor = 'green'
+              sx = {{height: 300, width: 300}}/>
+          </Box>
+        </Box>
       </Box>
+      {/* Footer */}
       <Box sx = {{display: 'flex', backgroundColor: 'primary.main'}}
         color = 'primary.contrastText' name = 'footer'
         alignItems = 'center' justifyContent='center'>
