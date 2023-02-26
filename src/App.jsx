@@ -25,16 +25,16 @@ function App() {
   });
   /* Context to pass setThemeState to children */
   return (
-      <ThemeProvider theme = {currentTheme}>
-        <CssBaseline /> {/* For Background Color */}
-        <ThemeStateContext.Provider value = {{themeState, changeThemeState}}>
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" exact element={<Home />} />
-              </Routes>
-            </BrowserRouter>
-        </ThemeStateContext.Provider>
-      </ThemeProvider>
+    <ThemeProvider theme = {currentTheme}>
+      <CssBaseline /> {/* For Background Color */}
+      <ThemeStateContext.Provider value = {{themeState, changeThemeState}}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeStateContext.Provider>
+    </ThemeProvider>
   );
 };
 

@@ -49,7 +49,7 @@ const menuButtons = () => {
         name = {page + ' button'}
         key = {page}>
         <Typography variant = "h6">
-        {page}
+          {page}
         </Typography>
       </Button>
     ))
@@ -104,73 +104,72 @@ function CustomNavbar() {
   };
 
   return (
-      <Box sx={{flexGrow: 1}}>
-        {/* Collapsed Navbar */}
-        <Drawer
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx = {{xs: 'block', md: 'none'}}
-          label = 'Main Navbar'
-          anchor = 'left'
-          sx = {{minWidth: 100}}
-          name = 'left navbar'
-          open = {CollapsedNBOpen}
-          onClose = {handleChangeCollapsed}
-          variant = 'temporary'
-          PaperProps={{sx: {width: 160}}}>
-          <IconButton />
-          {menuButtons()}
-        </Drawer>
-        {/* Top Navbar */}
-        <AppBar position="static"
+    <Box sx={{flexGrow: 1}}>
+      {/* Collapsed Navbar */}
+      <Drawer
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        sx = {{xs: 'block', md: 'none', minWidth: 100}}
+        label = 'Main Navbar'
+        anchor = 'left'
+        name = 'left navbar'
+        open = {CollapsedNBOpen}
+        onClose = {handleChangeCollapsed}
+        variant = 'temporary'
+        PaperProps={{sx: {width: 160}}}>
+        <IconButton />
+        {menuButtons()}
+      </Drawer>
+      {/* Top Navbar */}
+      <AppBar position="static"
         color = 'primary' name = 'top navbar'>
-          <Toolbar>
-            {/* Collapsed Options */}
-            <IconButton sx =
-              {{display: {xs: 'flex', md: 'none', padding: 0},
-                fontSize: 40, height: 60, width: 60}}
-              name = 'navbar options' color = 'tertiary' size = 'large'
-              onClick = {handleChangeCollapsed}>
-              <MenuIcon sx = {{height: 40, width: 40}} />
+        <Toolbar>
+          {/* Collapsed Options */}
+          <IconButton sx =
+            {{display: {xs: 'flex', md: 'none', padding: 0},
+              fontSize: 40, height: 60, width: 60}}
+          name = 'navbar options' color = 'tertiary' size = 'large'
+          onClick = {handleChangeCollapsed}>
+            <MenuIcon sx = {{height: 40, width: 40}} />
+          </IconButton>
+          {/* Typography box */}
+          <Box sx = {{display: 'flex', flexGrow: 1,
+            justifyContent: 'left'}}name = 'typography box'>
+            <Typography variant="h2" component="div" sx={{display: 'flex'}}>
+              Adam Hammond
+            </Typography>
+          </Box>
+          {/* Button Box */}
+          <Box sx = {{flexGrow: 2, justifyContent: 'flex-end',
+            display: {xs: 'none', md: 'flex'}}} name = 'button box'>
+            {/* Buttons Box*/}
+            {menuButtons()}
+          </Box>
+          {/* Settings Box*/}
+          <Box sx = {{flexShrink: 1, mr: 2,
+            width: 0, justifyContent: 'flex-end'}}
+          name = 'settings box'>
+            <IconButton onClick = {handleSettingsClick}
+              name = 'settings button'>
+              <SettingsIcon color = 'tertiary'/>
             </IconButton>
-            {/* Typography box */}
-            <Box sx = {{display: 'flex', flexGrow: 1,
-              justifyContent: 'left'}}name = 'typography box'>
-              <Typography variant="h2" component="div" sx={{display: 'flex'}}>
-                Adam Hammond
-              </Typography>
-            </Box>
-            {/* Button Box */}
-            <Box sx = {{flexGrow: 2, justifyContent: 'flex-end',
-              display: {xs: 'none', md: 'flex'}}} name = 'button box'>
-              {/* Buttons Box*/}
-              {menuButtons()}
-            </Box>
-            {/* Settings Box*/}
-            <Box sx = {{flexShrink: 1, mr: 2,
-              width: 0, justifyContent: 'flex-end'}}
-              name = 'settings box'>
-              <IconButton onClick = {handleSettingsClick}
-                name = 'settings button'>
-                <SettingsIcon color = 'tertiary'/>
-              </IconButton>
-              <Menu
-                anchorEl = {anchorEl}
-                open = {settingsOpen}
-                onClose = {handleSettingsClose}>
-                <MenuItem>
-                  <FormGroup>
+            <Menu
+              anchorEl = {anchorEl}
+              open = {settingsOpen}
+              onClose = {handleSettingsClose}>
+              <MenuItem>
+                <FormGroup>
                   <FormControlLabel control={<Switch
-                  checked = {themeState === 'dark'}
-                  onChange = {handleDarkModeChange}/>} label="Dark Mode" />
-                  </FormGroup>
-                </MenuItem>
-              </Menu>
-            </Box>
-          </Toolbar>
-        </AppBar>
-      </Box>
+                    checked = {themeState === 'dark'}
+                    onChange = {handleDarkModeChange}/>} label="Dark Mode" />
+                </FormGroup>
+              </MenuItem>
+            </Menu>
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
 };
 
