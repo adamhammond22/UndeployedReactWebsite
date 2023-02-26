@@ -79,7 +79,6 @@ function MainContent() {
         justifyContent: 'space-between', flexDirection: 'row'}}>
         <Box sx={{flexDirection: 'column', flexGrow: 5, maxWidth: 1000}}>
           {rightContentBoxes()}
-          {rightContentBoxes()}
         </Box>
         {/* Splitting box in middle */}
         <Box sx={{flexDirection: 'column', flexGrow: 2, maxWidth: 400,

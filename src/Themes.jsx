@@ -31,6 +31,11 @@ const lightTheme = {
     background: {
       default: '#faf4ec',
     },
+    quaternary: {
+      // turqoise
+      main: '#3a6860',
+      contrastText: '#fff',
+    },
   },
   typography: {
     // Main name
@@ -63,6 +68,10 @@ const lightTheme = {
     p3: {
       fontSize: 20,
     },
+    // Tiny Text
+    p4: {
+      fontSize: 16,
+    },
   },
   breakpoints: {
     values: {
@@ -70,6 +79,8 @@ const lightTheme = {
       sm: 600,
       md: 1030,
       lg: 1200,
+      // kind of hack-ey way to break experience
+      experiencebr: 1430,
       xl: 1536,
     },
   },
