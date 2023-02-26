@@ -1,7 +1,6 @@
 import React from 'react';
 import {CustomNavbar} from './CustomNavbar';
 import Box from '@mui/material/Box';
-import AppBar from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import {Typography} from '@mui/material';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -9,19 +8,19 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import {leftContentBoxes, rightContentBoxes} from './HomeContent';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {useTheme} from '@mui/material/styles';
+import Link from '@mui/material/Link';
 // import {useNavigate} from "react-router-dom";
+
+const githubLink = 'https://github.com/adamhammond22';
+const linkedInLink = 'https://www.linkedin.com/in/adamhammond22/';
 
 /**
  * Home Component
  * @return {object} JSX
  */
 function Home() {
-  // const navigate = useNavigate();
-  console.log(__dirname);
-  console.log('hello!');
   return (
     <Box>
-      <AppBar />
       <CustomNavbar />
       <Box name= 'content' sx={{display: 'flex', alignItems: 'center',
         flexDirection: 'column'}}>
@@ -46,10 +45,14 @@ function Home() {
             </Typography>
             <br />
             <IconButton color = 'primary'>
-              <GitHubIcon sx = {{height: 40, width: 40}}/>
+              <Link href= {githubLink} target="_blank">
+                <GitHubIcon sx = {{height: 40, width: 40}}/>
+              </Link>
             </IconButton>
             <IconButton color = 'primary'>
-              <LinkedInIcon sx = {{height: 40, width: 40}}/>
+              <Link href= {linkedInLink} target="_blank">
+                <LinkedInIcon sx = {{height: 40, width: 40}}/>
+              </Link>
             </IconButton>
           </Box>
         </Box>
@@ -58,6 +61,27 @@ function Home() {
           mt: 2, height: 'auto'}}>
           <MainContent name = 'main Content'/>
         </Box>
+      </Box>
+      <Box sx = {{display: 'flex', backgroundColor: 'primary.main'}}
+        color = 'primary.contrastText' name = 'footer'
+        alignItems = 'center' justifyContent='center'>
+        <Typography variant = 'p2'>
+          Adam Hammond
+        </Typography>
+        <Box sx = {{width: 10}} />
+        <IconButton>
+          <Link href= {linkedInLink} target="_blank">
+            <LinkedInIcon color = 'secondary'
+              sx = {{height: 30, width: 30}}/>
+          </Link>
+        </IconButton>
+        <Box sx = {{width: 10}} />
+        <IconButton>
+          <Link href= {githubLink} target="_blank">
+            <GitHubIcon color = 'secondary'
+              sx = {{height: 30, width: 30}}/>
+          </Link>
+        </IconButton>
       </Box>
     </Box>
   );

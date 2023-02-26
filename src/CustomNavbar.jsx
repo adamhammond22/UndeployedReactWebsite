@@ -3,7 +3,6 @@ import React, {useContext} from 'react';
 import AppBar from '@mui/material/AppBar';
 import {Typography} from '@mui/material';
 import Box from '@mui/material/Box';
-// import List from '@mui/material/List';
 import IconButton from '@mui/material/IconButton';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -14,45 +13,83 @@ import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import VideogameAssetIcon from '@mui/icons-material/VideogameAsset';
 import MenuItem from '@mui/material/MenuItem';
 import ContactPageIcon from '@mui/icons-material/ContactPage';
-// import ListItem from '@mui/material/ListItem';
-// import CloseIcon from '@mui/icons-material/Close';
-// import Divider from '@mui/material/Divider';
 import Toolbar from '@mui/material/Toolbar';
 import SettingsIcon from '@mui/icons-material/Settings';
 import {ThemeStateContext} from './Contexts';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
-/* Handles Pages and their respective Icons */
-const pages = ['Contact', 'Projects', 'Resume', 'Games'];
-const pageIconReturner = (index) => {
-  if (pages[index] === 'Contact') {
-    return (<QuestionAnswerIcon />);
-  } else if (pages[index] === 'Projects') {
-    return (<WorkHistoryIcon />);
-  } else if (pages[index] === 'Resume') {
-    return (<ContactPageIcon />);
-  } else if (pages[index] === 'Games') {
-    return (<VideogameAssetIcon />);
-  }
-};
+import Link from '@mui/material/Link';
+import HomeIcon from '@mui/icons-material/Home';
+
+const resumeLink = 'AdamHammondResumeNov22-4.pdf';
 
 /* Menu buttons for both navbars */
 const menuButtons = () => {
   return (
-    pages.map((page, index)=>(
+    <Box>
+      <Link href='/'>
+        <Button
+          sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
+          color = 'secondary'
+          variant = 'contained'
+          startIcon={<HomeIcon />}
+          name = {'Home button'}
+          key = 'Home'>
+          <Typography variant = "h6">
+            Home
+          </Typography>
+        </Button>
+      </Link>
       <Button
         sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
         color = 'secondary'
         variant = 'contained'
-        startIcon={pageIconReturner(index)}
-        name = {page + ' button'}
-        key = {page}>
+        startIcon={<QuestionAnswerIcon />}
+        name = {'Contact button'}
+        key = 'Contact'>
         <Typography variant = "h6">
-          {page}
+          Contact
         </Typography>
       </Button>
-    ))
+      <Link href='/Projects'>
+        <Button
+          sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
+          color = 'secondary'
+          variant = 'contained'
+          startIcon={<WorkHistoryIcon />}
+          name = {'Projects button'}
+          key = 'Projects'>
+          <Typography variant = "h6">
+            Projects
+          </Typography>
+        </Button>
+      </Link>
+      <Link href= {resumeLink} target="_blank">
+        <Button
+          sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
+          color = 'secondary'
+          variant = 'contained'
+          startIcon={<ContactPageIcon />}
+          name = {'Resume button'}
+          key = 'Resume'>
+          <Typography variant = "h6">
+            Resume
+          </Typography>
+        </Button>
+      </Link>
+      <Button
+        sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
+        color = 'secondary'
+        variant = 'contained'
+        startIcon={<VideogameAssetIcon />}
+        name = {'Games button'}
+        key = 'Games'>
+        <Typography variant = "h6">
+          Games
+        </Typography>
+      </Button>
+    </Box>
   );
 };
 

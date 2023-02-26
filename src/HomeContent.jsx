@@ -2,6 +2,14 @@ import React from 'react';
 import {Typography} from '@mui/material';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import EmailIcon from '@mui/icons-material/Email';
+import IconButton from '@mui/material/IconButton';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import Link from '@mui/material/Link';
+
+const githubLink = 'https://github.com/adamhammond22';
+const linkedInLink = 'https://www.linkedin.com/in/adamhammond22/';
 
 const courses = [
   'Probability & Statistics',
@@ -90,8 +98,47 @@ const rightContentBoxes = () => {
           </Box>
         </Box>
       </Box>
+      {/* Contact */}
       <Box color = 'quaternary.contrastText' backgroundColor = 'quaternary.main'
-        sx = {{p: 3, mb: 2}} name = 'about'>
+        sx = {{p: 3, mb: 2, flexDirection: 'column'}} name = 'contact'>
+        <Typography variant = "h3">
+        Contact Me!
+        </Typography>
+        <Box sx = {{minHeight: 50, display: 'flex', flexDirection: 'row'}}
+          alignItems = 'center'>
+          <EmailIcon/>
+          <Typography variant = "p3" sx = {{pl: 2}}>
+          abhammond22@gmail.com
+          </Typography>
+        </Box>
+        <Box sx = {{minHeight: 50, display: 'flex', flexDirection: 'row'}}
+          alignItems = 'center'>
+          <IconButton sx = {{flexShrink: 1, p: 0}}>
+            <Link href= {linkedInLink} target="_blank">
+              <LinkedInIcon color = 'secondary'
+                sx = {{p: 0, height: 30, width: 30}}/>
+            </Link>
+          </IconButton>
+          <Typography variant = "p3" sx = {{pl: 2}}>
+            https://www.linkedin.com/in/adamhammond22/
+          </Typography>
+        </Box>
+        <Box sx = {{minHeight: 50, display: 'flex', flexDirection: 'row'}}
+          alignItems = 'center'>
+          <IconButton sx = {{p: 0}}>
+            <Link href= {githubLink} target="_blank">
+              <GitHubIcon color = 'secondary'
+                sx = {{p: 0, height: 30, width: 30}}/>
+            </Link>
+          </IconButton>
+          <Typography variant = "p3" sx = {{pl: 2}}>
+            https://github.com/adamhammond22
+          </Typography>
+        </Box>
+      </Box>
+      {/* Coursework grid */}
+      <Box color = 'quaternary.contrastText' backgroundColor = 'quaternary.main'
+        sx = {{p: 3, mb: 2}} name = 'coursework'>
         <Typography variant = "h3" sx = {{mb: 3}}>
         Relevant Coursework
         </Typography>

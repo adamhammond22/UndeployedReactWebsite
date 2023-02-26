@@ -4,6 +4,7 @@ import {darkTheme, lightTheme} from './Themes';
 import {ThemeStateContext} from './Contexts';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import Home from './Home';
+import Projects from './Projects';
 import CssBaseline from '@mui/material/CssBaseline';
 /**
  * App Component, routes all other components.
@@ -31,10 +32,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" exact element={<Home />} />
+            <Route path="/Projects" exact element={<Projects />} />
           </Routes>
         </BrowserRouter>
       </ThemeStateContext.Provider>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 };
 
