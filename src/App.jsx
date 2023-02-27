@@ -19,7 +19,7 @@ function App() {
     }
   };
   /* Set current theme according to theme state */
-  const currentTheme = themeState === 'dark'? createTheme({darkTheme}) :
+  const currentTheme = themeState === 'dark'? createTheme(darkTheme) :
     createTheme(lightTheme);
   useEffect(() => {
     console.log('state:' + themeState);
