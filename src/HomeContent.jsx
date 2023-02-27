@@ -106,7 +106,7 @@ const rightContentBoxes = () => {
         </Typography>
         <Box sx = {{minHeight: 50, display: 'flex', flexDirection: 'row'}}
           alignItems = 'center'>
-          <EmailIcon/>
+          <EmailIcon color = 'secondary'/>
           <Typography variant = "p3" sx = {{pl: 2}}>
           abhammond22@gmail.com
           </Typography>

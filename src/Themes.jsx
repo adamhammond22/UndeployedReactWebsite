@@ -3,28 +3,28 @@ const darkTheme = {
     type: 'light',
     primary: {
       // less deep purple
-      main: '#42394b',
+      main: '#1F1F1F',
       // clean white
       contrastText: '#fff',
     },
     secondary: {
       // cream white
-      main: '#faf4ec',
+      main: '#BB86FC',
       // deep purple
-      contrastText: '#31293b',
+      contrastText: '#1F1F1F',
     },
     tertiary: {
       // yellow
-      main: '#fbe49b',
+      main: '#444444',
       // clean white
       contrastText: '#fff',
     },
     background: {
-      default: '#faf4ec',
+      default: '#121212',
     },
     quaternary: {
       // turqoise
-      main: '#3a6860',
+      main: '#1F1F1F',
       contrastText: '#fff',
     },
   },
@@ -104,8 +104,8 @@ const lightTheme = {
     tertiary: {
       // yellow
       main: '#fbe49b',
-      // clean white
-      contrastText: '#fff',
+      // black
+      contrastText: 'black',
     },
     background: {
       default: '#faf4ec',

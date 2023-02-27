@@ -18,11 +18,25 @@ function App() {
       setThemeState(newState);
     }
   };
+
+  /* WIP dark state not switching fast enough for me */
+  useEffect(() => {
+    const item = window.localStorage.getItem('themeState');
+    console.log('item?' + item);
+    setThemeState(window.localStorage.getItem('themeState'));
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem('themeState', themeState);
+  }, [themeState]);
+
+
   /* Set current theme according to theme state */
   const currentTheme = themeState === 'dark'? createTheme(darkTheme) :
     createTheme(lightTheme);
   useEffect(() => {
     console.log('state:' + themeState);
+    console.log('current theme:' + Object.keys(currentTheme));
   });
   /* Context to pass setThemeState to children */
   return (

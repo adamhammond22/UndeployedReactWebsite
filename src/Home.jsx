@@ -35,23 +35,25 @@ function Home() {
               maxWidth: {xs: 453, md: 413},
               flexShrink: 1, border: 15, borderColor: 'secondary.main'}}/>
           <Box sx = {{pl: 5, flexShrink: 1}}>
-            <Typography variant = 'p1'>
+            <Typography variant = 'p1' color = 'tertiary.contrastText'>
               Hello There! <br />
             </Typography>
-            <Typography variant = 'p2'>
+            <Typography variant = 'p2' color = 'tertiary.contrastText'>
               I'm Adam Hammond, <br />
               I am a 3rd year Computer Science student at
               University of California, Santa Cruz.
             </Typography>
             <br />
-            <IconButton color = 'primary'>
+            <IconButton>
               <Link href= {githubLink} target="_blank">
-                <GitHubIcon sx = {{height: 40, width: 40}}/>
+                <GitHubIcon sx = {{height: 40, width: 40}}
+                  color = 'primary'/>
               </Link>
             </IconButton>
-            <IconButton color = 'primary'>
+            <IconButton>
               <Link href= {linkedInLink} target="_blank">
-                <LinkedInIcon sx = {{height: 40, width: 40}}/>
+                <LinkedInIcon sx = {{height: 40, width: 40}}
+                  color = 'primary'/>
               </Link>
             </IconButton>
           </Box>
