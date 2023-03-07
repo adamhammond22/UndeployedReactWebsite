@@ -1,5 +1,6 @@
 {
   "name": "react-personal-website",
+  "homepage" : "http://adamhammond22.github.io/ReactWebsite",
   "version": "1.0.0",
   "description": "React Personal Website",
   "author": "Adam Hammond <abhammond22@gmail.com>",
@@ -34,9 +35,9 @@
   },
   "scripts": {
     "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
-    "build": "webpack --config=Scripts/config/webpack.prod.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
     "start": "react-scripts start",
     "test": "react-scripts test --coverage",
     "lint": "eslint src --ignore-pattern validity.test.js --ext .js --ext .jsx",
