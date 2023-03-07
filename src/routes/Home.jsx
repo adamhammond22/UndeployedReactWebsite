@@ -1,11 +1,11 @@
 import React from 'react';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import {CustomNavbar, CustomFooter} from './Components';
+import {CustomNavbar, CustomFooter} from '../Components';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import {Typography} from '@mui/material';
-import {leftContentBoxes, rightContentBoxes} from './HomeContent';
+import {leftContentBoxes, rightContentBoxes} from '../HomeContent';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {useTheme} from '@mui/material/styles';
 import Link from '@mui/material/Link';
@@ -33,7 +33,7 @@ function Home() {
             sx = {{height: 330, width: 413,
               maxHeight: {xs: 370, md: 330},
               maxWidth: {xs: 453, md: 413},
-              flexShrink: 1, border: 15, borderColor: 'secondary.main'}}/>
+              flexShrink: 1, border: 15, borderColor: 'quaternary.main'}}/>
           <Box sx = {{pl: 5, flexShrink: 1}}>
             <Typography variant = 'p1' color = 'tertiary.contrastText'>
               Hello There! <br />

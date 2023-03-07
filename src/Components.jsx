@@ -77,7 +77,7 @@ const menuButtons = (currentPage)=> {
 const pageSpecificButtons = (currentPage) => {
   if (currentPage === 'Home') {
     return (
-      <Link href='/Projects'>
+      <Link to='/Projects'>
         <Button
           sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
           color = 'nbButtons'
@@ -93,7 +93,7 @@ const pageSpecificButtons = (currentPage) => {
     );
   } else {
     return (
-      <Link href='/'>
+      <Link to='/'>
         <Button
           sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
           color = 'nbButtons'
@@ -253,6 +253,20 @@ function CustomFooter() {
   );
 };
 
+/**
+ * Routing Navbar creator
+ * @return {object} JSX
+ */
+function routingNavbar() {
+  return (
+    <div>
+      <Link to="/">Home</Link>
+      <Link to="/Projects">Projects</Link>
+    </div>
+  );
+};
+
+export {routingNavbar};
 export {CustomNavbar};
 export {CustomFooter};
 

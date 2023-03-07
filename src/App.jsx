@@ -1,5 +1,5 @@
 import React, {lazy, useEffect} from 'react';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import {darkTheme, lightTheme} from './Themes';
 import {ThemeStateContext} from './Contexts';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
@@ -7,8 +7,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import {Suspense} from 'react';
 
 // Lazyload content so they have time to setup themes
-const Home = lazy(() => import('./Home'));
-const Projects = lazy(() => import('./Projects'));
+const Home = lazy(() => import('./routes/Home'));
+const Projects = lazy(() => import('./routes/Projects'));
 
 /**
  * App Component, routes all other components.
@@ -52,14 +52,12 @@ function App() {
     <ThemeProvider theme = {currentTheme}>
       <CssBaseline /> {/* For Background Color */}
       <ThemeStateContext.Provider value = {{themeState, changeThemeState}}>
-        <BrowserRouter>
-          <Suspense fallback = {null}>
-            <Routes>
-              <Route path="/" exact element={<Home />} />
-              <Route path="/Projects" exact element={<Projects />} />
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
+        <Suspense fallback = {null}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Projects" element={<Projects />} />
+          </Routes>
+        </Suspense>
       </ThemeStateContext.Provider>
     </ThemeProvider>
   );
