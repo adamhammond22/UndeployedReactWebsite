@@ -1,10 +1,10 @@
 import React from 'react';
-import {CustomNavbar} from './Components';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import {CustomNavbar, CustomFooter} from './Components';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import {Typography} from '@mui/material';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import {leftContentBoxes, rightContentBoxes} from './HomeContent';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import {useTheme} from '@mui/material/styles';
@@ -21,7 +21,7 @@ const linkedInLink = 'https://www.linkedin.com/in/adamhammond22/';
 function Home() {
   return (
     <Box>
-      <CustomNavbar />
+      <CustomNavbar currentPage={'Home'}/>
       <Box name= 'content' sx={{display: 'flex', alignItems: 'center',
         flexDirection: 'column'}}>
         {/* Top Box */}
@@ -47,13 +47,13 @@ function Home() {
             <IconButton>
               <Link href= {githubLink} target="_blank">
                 <GitHubIcon sx = {{height: 40, width: 40}}
-                  color = 'primary'/>
+                  color = 'welcomeBoxLinks'/>
               </Link>
             </IconButton>
             <IconButton>
               <Link href= {linkedInLink} target="_blank">
                 <LinkedInIcon sx = {{height: 40, width: 40}}
-                  color = 'primary'/>
+                  color = 'welcomeBoxLinks'/>
               </Link>
             </IconButton>
           </Box>
@@ -64,27 +64,7 @@ function Home() {
           <MainContent name = 'main Content'/>
         </Box>
       </Box>
-      <Box sx = {{display: 'flex', backgroundColor: 'primary.main'}}
-        color = 'primary.contrastText' name = 'footer'
-        alignItems = 'center' justifyContent='center'>
-        <Typography variant = 'p2'>
-          Adam Hammond
-        </Typography>
-        <Box sx = {{width: 10}} />
-        <IconButton>
-          <Link href= {linkedInLink} target="_blank">
-            <LinkedInIcon color = 'secondary'
-              sx = {{height: 30, width: 30}}/>
-          </Link>
-        </IconButton>
-        <Box sx = {{width: 10}} />
-        <IconButton>
-          <Link href= {githubLink} target="_blank">
-            <GitHubIcon color = 'secondary'
-              sx = {{height: 30, width: 30}}/>
-          </Link>
-        </IconButton>
-      </Box>
+      <CustomFooter />
     </Box>
   );
 }

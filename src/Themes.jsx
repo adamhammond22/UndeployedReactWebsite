@@ -2,7 +2,8 @@ const darkTheme = {
   palette: {
     type: 'light',
     primary: {
-      // less deep purple
+      // navbar color
+      // dark grey
       main: '#1F1F1F',
       // clean white
       contrastText: '#fff',
@@ -26,6 +27,19 @@ const darkTheme = {
       // turqoise
       main: '#1F1F1F',
       contrastText: '#fff',
+    },
+    nbButtons: {
+      // bright purple
+      main: '#BB86FC',
+      // black
+      contrastText: '#1F1F1F',
+    },
+    nbhighlight: {
+      // highlight colors for settings & collapsenb
+      main: '#BB86FC',
+    },
+    welcomeBoxLinks: {
+      main: '#BB86FC',
     },
   },
   typography: {
@@ -114,6 +128,20 @@ const lightTheme = {
       // turqoise
       main: '#3a6860',
       contrastText: '#fff',
+    },
+    nbButtons: {
+      // clean white
+      main: '#fff',
+      // deep purple
+      contrastText: '#31293b',
+    },
+    nbhighlight: {
+      // highlight colors for settings & collapsenb
+      // yellow
+      main: '#fbe49b',
+    },
+    welcomeBoxLinks: {
+      main: '#42394b',
     },
   },
   typography: {

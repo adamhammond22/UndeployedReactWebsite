@@ -1,4 +1,3 @@
-
 /* This script is used with index.html to make the loading screen consistant with the theme
     This script is used in index.html twice 
         1 - to query localStorage and determine the correct background color 
@@ -6,7 +5,6 @@
 /* Hack-ey script to avoid flashbang*/
 
 var color;
-
 
 try {
     /* We try to set the background color, this will only work within the

@@ -18,8 +18,7 @@ function App() {
   /* Page Theme State */
   const [themeState, setThemeState] = React.useState(() => {
     const saved = localStorage.getItem('themeState');
-    console.log('saved' + saved);
-    if (saved == 'dark') {
+    if (saved === 'dark') {
       return 'dark';
     } else {
       return 'light';
@@ -50,19 +49,19 @@ function App() {
   }
 
   return (
-      <ThemeProvider theme = {currentTheme}>
-        <CssBaseline /> {/* For Background Color */}
-        <ThemeStateContext.Provider value = {{themeState, changeThemeState}}>
-          <BrowserRouter>
-            <Suspense fallback = {null}>
-              <Routes>
-                <Route path="/" exact element={<Home />} />
-                <Route path="/Projects" exact element={<Projects />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
-        </ThemeStateContext.Provider>
-      </ThemeProvider>
+    <ThemeProvider theme = {currentTheme}>
+      <CssBaseline /> {/* For Background Color */}
+      <ThemeStateContext.Provider value = {{themeState, changeThemeState}}>
+        <BrowserRouter>
+          <Suspense fallback = {null}>
+            <Routes>
+              <Route path="/" exact element={<Home />} />
+              <Route path="/Projects" exact element={<Projects />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </ThemeStateContext.Provider>
+    </ThemeProvider>
   );
 };
 

@@ -12,6 +12,7 @@
     "@mui/material": "*",
     "prop-types": "*",
     "react": "*",
+    "react-alert-with-buttons": "^0.0.18",
     "react-dom": "*",
     "react-helmet": "^6.1.0",
     "react-router-dom": "*"
@@ -26,9 +27,12 @@
     "eslint-plugin-react": "*",
     "eslint-plugin-react-hooks": "*",
     "eslint-plugin-testing-library": "*",
+    "gh-pages": "^5.0.0",
     "react-scripts": "*"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "test": "react-scripts test --coverage",
     "lint": "eslint src --ignore-pattern validity.test.js --ext .js --ext .jsx",

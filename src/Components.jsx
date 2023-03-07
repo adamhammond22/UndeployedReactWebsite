@@ -1,5 +1,7 @@
 import React, {useContext} from 'react';
 // import Drawer from '@mui/material/Drawer';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import AppBar from '@mui/material/AppBar';
 import {Typography} from '@mui/material';
 import Box from '@mui/material/Box';
@@ -24,26 +26,16 @@ import HomeIcon from '@mui/icons-material/Home';
 
 const resumeLink = 'AdamHammondResumeNov22-4.pdf';
 
-/* Menu buttons for both navbars */
-const menuButtons = () => {
+const githubLink = 'https://github.com/adamhammond22';
+const linkedInLink = 'https://www.linkedin.com/in/adamhammond22/';
+
+/* Return all menu buttons */
+const menuButtons = (currentPage)=> {
   return (
     <Box>
-      <Link href='/'>
-        <Button
-          sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
-          color = 'secondary'
-          variant = 'contained'
-          startIcon={<HomeIcon />}
-          name = {'Home button'}
-          key = 'Home'>
-          <Typography variant = "h6">
-            Home
-          </Typography>
-        </Button>
-      </Link>
       <Button
         sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
-        color = 'secondary'
+        color = 'nbButtons'
         variant = 'contained'
         startIcon={<QuestionAnswerIcon />}
         name = {'Contact button'}
@@ -52,23 +44,10 @@ const menuButtons = () => {
           Contact
         </Typography>
       </Button>
-      <Link href='/Projects'>
-        <Button
-          sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
-          color = 'secondary'
-          variant = 'contained'
-          startIcon={<WorkHistoryIcon />}
-          name = {'Projects button'}
-          key = 'Projects'>
-          <Typography variant = "h6">
-            Projects
-          </Typography>
-        </Button>
-      </Link>
       <Link href= {resumeLink} target="_blank">
         <Button
           sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
-          color = 'secondary'
+          color = 'nbButtons'
           variant = 'contained'
           startIcon={<ContactPageIcon />}
           name = {'Resume button'}
@@ -80,7 +59,7 @@ const menuButtons = () => {
       </Link>
       <Button
         sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
-        color = 'secondary'
+        color = 'nbButtons'
         variant = 'contained'
         startIcon={<VideogameAssetIcon />}
         name = {'Games button'}
@@ -89,15 +68,54 @@ const menuButtons = () => {
           Games
         </Typography>
       </Button>
+      {pageSpecificButtons(currentPage)}
     </Box>
   );
 };
 
+/* Return page specific buttons */
+const pageSpecificButtons = (currentPage) => {
+  if (currentPage === 'Home') {
+    return (
+      <Link href='/Projects'>
+        <Button
+          sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
+          color = 'nbButtons'
+          variant = 'contained'
+          startIcon={<WorkHistoryIcon />}
+          name = {'Projects button'}
+          key = 'Projects'>
+          <Typography variant = "h6">
+            Projects
+          </Typography>
+        </Button>
+      </Link>
+    );
+  } else {
+    return (
+      <Link href='/'>
+        <Button
+          sx = {{maxWidth: 120, ml: 2, mb: 1, mt: 1}}
+          color = 'nbButtons'
+          variant = 'contained'
+          startIcon={<HomeIcon />}
+          name = {'Home button'}
+          key = 'Home'>
+          <Typography variant = "h6">
+            Home
+          </Typography>
+        </Button>
+      </Link>
+    );
+  }
+};
+
 /**
  * Navbar Drawer creator
+ * @param {props} props for current page
  * @return {object} JSX
  */
-function CustomNavbar() {
+function CustomNavbar(props) {
   /* Theme State */
   const {themeState, changeThemeState} = useContext(ThemeStateContext);
 
@@ -111,7 +129,6 @@ function CustomNavbar() {
 
   /* Handles a change in collapsed NB, setting it to bool */
   const handleChangeCollapsed = (bool) => {
-    console.log('changecalled');
     if (CollapsedNBOpen) {
       setCollapsedNBOpen(false);
     } else {
@@ -119,10 +136,6 @@ function CustomNavbar() {
     }
   };
 
-  /* Debug
-  React.useEffect(() => {
-    console.log('navbar open:' + CollapsedNBOpen);
-  }); */
 
   /* Handles opening and closing settings */
   const handleSettingsClick = (event) => {
@@ -156,7 +169,7 @@ function CustomNavbar() {
         variant = 'temporary'
         PaperProps={{sx: {width: 160}}}>
         <IconButton />
-        {menuButtons()}
+        {menuButtons(props.currentPage)}
       </Drawer>
       {/* Top Navbar */}
       <AppBar position="static"
@@ -166,7 +179,7 @@ function CustomNavbar() {
           <IconButton sx =
             {{display: {xs: 'flex', md: 'none', padding: 0},
               fontSize: 40, height: 60, width: 60}}
-          name = 'navbar options' color = 'tertiary' size = 'large'
+          name = 'navbar options' color = 'nbhighlight' size = 'large'
           onClick = {handleChangeCollapsed}>
             <MenuIcon sx = {{height: 40, width: 40}} />
           </IconButton>
@@ -181,7 +194,7 @@ function CustomNavbar() {
           <Box sx = {{flexGrow: 2, justifyContent: 'flex-end',
             display: {xs: 'none', md: 'flex'}}} name = 'button box'>
             {/* Buttons Box*/}
-            {menuButtons()}
+            {menuButtons(props.currentPage)}
           </Box>
           {/* Settings Box*/}
           <Box sx = {{flexShrink: 1, mr: 2,
@@ -189,7 +202,7 @@ function CustomNavbar() {
           name = 'settings box'>
             <IconButton onClick = {handleSettingsClick}
               name = 'settings button'>
-              <SettingsIcon color = 'tertiary'/>
+              <SettingsIcon color = 'nbhighlight'/>
             </IconButton>
             <Menu
               anchorEl = {anchorEl}
@@ -210,21 +223,36 @@ function CustomNavbar() {
   );
 };
 
-
 /**
- * Navbar Drawer creator
+ * Custom Footer creator
  * @return {object} JSX
  */
-function loading() {
+function CustomFooter() {
   return (
-  <Box sx = {{width: `calc(100%)`, height: `calc(100%)`}}
-    backgroundColor = 'tertiary.main'>
-    <Typography>
-      I am loading
-    </Typography>
-  </Box>
+    <Box sx = {{display: 'flex', backgroundColor: 'primary.main'}}
+      color = 'primary.contrastText' name = 'footer'
+      alignItems = 'center' justifyContent='center'>
+      <Typography variant = 'p2'>
+        Adam Hammond
+      </Typography>
+      <Box sx = {{width: 10}} />
+      <IconButton>
+        <Link href= {linkedInLink} target="_blank">
+          <LinkedInIcon color = 'nbButtons'
+            sx = {{height: 30, width: 30}}/>
+        </Link>
+      </IconButton>
+      <Box sx = {{width: 10}} />
+      <IconButton>
+        <Link href= {githubLink} target="_blank">
+          <GitHubIcon color = 'nbButtons'
+            sx = {{height: 30, width: 30}}/>
+        </Link>
+      </IconButton>
+    </Box>
   );
 };
 
 export {CustomNavbar};
-export {loading};
+export {CustomFooter};
+
