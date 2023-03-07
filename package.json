@@ -11,27 +11,16 @@
     "@emotion/styled": "*",
     "@mui/icons-material": "*",
     "@mui/material": "*",
-    "prop-types": "*",
     "react": "*",
-    "react-alert-with-buttons": "^0.0.18",
     "react-dom": "*",
-    "react-helmet": "^6.1.0",
-    "react-router-dom": "*"
+    "react-router-dom": "*",
+    "eslint-config-react-app": "*"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "*",
-    "@testing-library/react": "*",
-    "@testing-library/user-event": "*",
-    "bestzip": "*",
     "eslint-config-google": "*",
-    "eslint-plugin-jest-dom": "*",
-    "eslint-plugin-react": "*",
-    "eslint-plugin-react-hooks": "*",
-    "eslint-plugin-testing-library": "*",
     "gh-pages": "^5.0.0",
     "react-scripts": "*",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "webpack": "^5.75.0"
   },
   "scripts": {
     "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
@@ -40,8 +29,7 @@
     "build": "react-scripts build",
     "start": "react-scripts start",
     "test": "react-scripts test --coverage",
-    "lint": "eslint src --ignore-pattern validity.test.js --ext .js --ext .jsx",
-    "zip": "bestzip CSE186-Assignment5-Submission.zip src/*"
+    "lint": "eslint src --ignore-pattern validity.test.js --ext .js --ext .jsx"
   },
   "eslintConfig": {
     "extends": [
@@ -58,16 +46,6 @@
         2
       ]
     }
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}",
-      "!src/index.js",
-      "!src/__tests__/common.js"
-    ],
-    "testMatch": [
-      "**/?(*.)+(spec|test).[jt]s?(x)"
-    ]
   },
   "browserslist": {
     "production": [
