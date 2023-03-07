@@ -1,5 +1,5 @@
 import React from 'react';
-import {CustomNavbar} from './CustomNavbar';
+import {CustomNavbar} from './Components';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import {Typography} from '@mui/material';

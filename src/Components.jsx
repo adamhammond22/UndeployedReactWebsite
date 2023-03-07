@@ -210,4 +210,21 @@ function CustomNavbar() {
   );
 };
 
+
+/**
+ * Navbar Drawer creator
+ * @return {object} JSX
+ */
+function loading() {
+  return (
+  <Box sx = {{width: `calc(100%)`, height: `calc(100%)`}}
+    backgroundColor = 'tertiary.main'>
+    <Typography>
+      I am loading
+    </Typography>
+  </Box>
+  );
+};
+
 export {CustomNavbar};
+export {loading};
